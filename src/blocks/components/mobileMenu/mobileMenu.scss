@@ -15,9 +15,7 @@
     transform: translateX(-100%);
     width: 280px;
     background: #fff;
-    -webkit-transition: left .3s;
-    -o-transition: left .3s;
-    transition: left .3s;
+    transition: all 0.25s ease;
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 1001;
@@ -63,10 +61,6 @@
 .mobileMenu-nav__ul li {
     position: relative;
 
-    span {
-        margin-left: 10px;
-    }
-
     a {
         padding: 8px 16px;
         min-height: 48px;
@@ -86,8 +80,19 @@
         transition: 0.25s;
         text-decoration: none;
 
-        &:hover {
+        &:hover,
+        &.router-link-exact-active{
             background: #f2f6fc;
         }
+
+        span:not(.svg) {
+            margin-left: 10px;
+        }
+
+        .svg{
+            width: 24px;
+            height: 24px;
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="page-nav">
+  <div class="page-nav" id="nav">
     <div class="container">
       <div class="page-nav__links">
         <router-link class="page-nav__link" v-for="(item,i) in this.links" :key="i"
@@ -76,18 +76,26 @@ export default {
     text-decoration: none;
 
 
-    &.router-link-exact-active::after {
+    &::after {
       position: absolute;
       content: "";
       border-top: 3px solid #1a73e8;
       border-radius: 3px 3px 0 0;
-      width: calc(100% - 48px);
+      max-width: 0;
       left: 50%;
       bottom: 0;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
-      overflow-y: hidden
+      overflow: hidden;
+      width: 100%;
+      transition: all 0.25s ease;
+
+    }
+
+
+    &.router-link-exact-active::after {
+      max-width: calc(100% - 48px);
     }
   }
 
