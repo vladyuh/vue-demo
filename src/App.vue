@@ -1,19 +1,32 @@
 <template>
   <div id="app">
+    <mobile-menu :links="this.nav"></mobile-menu>
     <router-view/>
   </div>
 </template>
 
 <script>
 
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, get } from "firebase/database";
+import {initializeApp} from "firebase/app";
+import {getDatabase, ref, child, get} from "firebase/database";
+import MobileMenu from "@/components/MobileMenu";
 
 
 export default {
-  data: function (){
+  components: {MobileMenu},
+  data: function () {
     return {
-      data: ""
+      data: "",
+      nav: [
+        {
+          name: "Обо мне",
+          link: "/",
+        },
+        {
+          name: "Проекты",
+          link: "/projects",
+        }
+      ],
     }
   },
   created() {
